@@ -1,19 +1,19 @@
 class Remark < Formula
   desc "Terminal-first code review notes for Git repos."
   homepage "https://github.com/casualjim/remark"
-  version "0.3.2"
+  version "0.3.3"
   if OS.mac? && Hardware::CPU.arm?
-      url "https://github.com/casualjim/remark/releases/download/v0.3.2/remark-aarch64-apple-darwin.tar.xz"
-      sha256 "3559c1856ea78f241270a5154be70fdb60e5f0785238eeb4fa6858dc85df9913"
+      url "https://github.com/casualjim/remark/releases/download/v0.3.3/remark-aarch64-apple-darwin.tar.xz"
+      sha256 "907b1e0f7be9fe4c27ded5d2328d0a81f22d4fdcdca5f0f307746d4e9bd5b9c3"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/remark/releases/download/v0.3.2/remark-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "5a438e27e6c5fb2b542e3aa50716f98616a0ea9d215330b3408a62f7d6b4f8a0"
+      url "https://github.com/casualjim/remark/releases/download/v0.3.3/remark-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "f1a4b5fdc3cf6f99a4039a27d6ac37bee3610666ed62de56c37544dca78d5362"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/remark/releases/download/v0.3.2/remark-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "bb5f978b7d26a66bd664594f50cdc8bb1a5936cfaf0c280c6bc6a31a8146d24b"
+      url "https://github.com/casualjim/remark/releases/download/v0.3.3/remark-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "edb6aba8fd6db99ae9f4fb0cad21032fdca6cfea92a0bd0b9900af69d14f171c"
     end
   end
   license "MIT"
