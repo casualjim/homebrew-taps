@@ -1,19 +1,19 @@
 class Scat < Formula
   desc "cat with syntax highlighting - a modern replacement for cat with tree-sitter powered syntax highlighting"
   homepage "https://github.com/casualjim/scat"
-  version "0.2.2"
+  version "0.3.0"
   if OS.mac? && Hardware::CPU.arm?
-      url "https://github.com/casualjim/scat/releases/download/v0.2.2/scat-aarch64-apple-darwin.tar.xz"
-      sha256 "b97b0229d6f43b461e803844ed2d799adc1acc975d1e54208633f86ac84aafa1"
+      url "https://github.com/casualjim/scat/releases/download/v0.3.0/scat-aarch64-apple-darwin.tar.xz"
+      sha256 "5b2d7206673dd8b0e493c8b66ed76930ff19f25bec7451c7c012976f41afd55e"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/scat/releases/download/v0.2.2/scat-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "5e781fb8d1f08ddcf3ba52eb379a41e8e0f838ccf513038513b9f8c733c98bc2"
+      url "https://github.com/casualjim/scat/releases/download/v0.3.0/scat-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "f26d4abec9fad327e646e7952c2d8dc99bcc7e3e54efe3f0b50ce43d6dddfbf2"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/scat/releases/download/v0.2.2/scat-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "569aac656c9af8f6472b62b3cf5e358c8e720fecc8e5303515189de4ac15f941"
+      url "https://github.com/casualjim/scat/releases/download/v0.3.0/scat-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "60b9baddebfa70f55a65183825a1292075ec396b9f4414fc5b6d206664425766"
     end
   end
   license "MIT"
