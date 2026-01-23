@@ -4,16 +4,16 @@ class Zage < Formula
   version "0.1.2"
   if OS.mac? && Hardware::CPU.arm?
       url "https://github.com/casualjim/zage/releases/download/v0.1.2/zage-aarch64-apple-darwin.tar.xz"
-      sha256 "506ba0ef2b7b42e7b6e857d882b01c0b947bc0e83f50ddb80e3dfdd7d6b29071"
+      sha256 "d9ec08aa99490bc752d2d330e4df91609ef9ed48d497f251ea52befdf3e54e15"
   end
   if OS.linux?
     if Hardware::CPU.arm?
       url "https://github.com/casualjim/zage/releases/download/v0.1.2/zage-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "d158afc06d6c4ffa8d4f492487971d9d5a54756413695ad4d573e46efb21ce29"
+      sha256 "5720d151ba76b590444ae65eaecfe607af6feeef95bdc969ea20dd3666d7fbce"
     end
     if Hardware::CPU.intel?
       url "https://github.com/casualjim/zage/releases/download/v0.1.2/zage-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "24ef08db03081e28de3fa5316b642826f8d203eeab31050bec659aa06e7bbbdb"
+      sha256 "d9ef8043235536e45a7348de311303d95630fd0606c2d7558e1cf1e0e0b0f0b3"
     end
   end
   license "MIT"
