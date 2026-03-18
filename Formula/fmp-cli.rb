@@ -1,19 +1,19 @@
 class FmpCli < Formula
   desc "Command-line interface for Financial Modeling Prep API"
   homepage "https://github.com/casualjim/fmp-rs"
-  version "0.1.11"
+  version "0.1.12"
   if OS.mac? && Hardware::CPU.arm?
-      url "https://github.com/casualjim/fmp-rs/releases/download/v0.1.11/fmp-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "b11c914270dfa2b04098fbf0b96c507102c0e550d1084d6d84f4f38be1db1ef7"
+      url "https://github.com/casualjim/fmp-rs/releases/download/v0.1.12/fmp-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "c42a5742520816078c9363c50cf448e61024bc7f8d87ad289af147a21b9e1efb"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/fmp-rs/releases/download/v0.1.11/fmp-cli-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "032277e3453f94067740e3abb63afbe630d09663d82ef1402e043cf837da08af"
+      url "https://github.com/casualjim/fmp-rs/releases/download/v0.1.12/fmp-cli-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "b0fd51f51c0e593c647fbaa5661e2d8a4d715112c8296f8a16d8996475c46a9b"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/fmp-rs/releases/download/v0.1.11/fmp-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "d31f85b7420cb95550b2b80d2e4f21940b6d899b8f5ae5062330cc5ab169b68a"
+      url "https://github.com/casualjim/fmp-rs/releases/download/v0.1.12/fmp-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "e2217a1cfdf0a4dda84df67d71dc4d8d70527ca04d690cbef43fdde351d46f2e"
     end
   end
   license "MIT"
