@@ -1,19 +1,19 @@
 class Zage < Formula
   desc "Shell history indexing and next-command suggestions with an online model"
   homepage "https://github.com/casualjim/zage"
-  version "0.1.5"
+  version "0.1.6"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/zage/releases/download/v0.1.5/zage-aarch64-apple-darwin.tar.xz"
-    sha256 "d05d1688128e7dfe436b013e02054cc394e35bf18c8312e884fba0f71e8f32da"
+    url "https://github.com/casualjim/zage/releases/download/v0.1.6/zage-aarch64-apple-darwin.tar.xz"
+    sha256 "d8e51249cbfaa560b7af0770a51f76a8c8c1da7aa590020ae05ebcd07aa29ddd"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/zage/releases/download/v0.1.5/zage-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "ce16442321cd10ec9c5d8a9d1e4f9691246b728acb404a376c8194a8f91f85d0"
+      url "https://github.com/casualjim/zage/releases/download/v0.1.6/zage-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "b1fe4365c41b5432c03e990fefa6b81e6212a306203a801768b10b7046c8dd24"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/zage/releases/download/v0.1.5/zage-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "1a52675c1ab2b04d9d9b66699f4f2369397ba8486b97582d94626f0a925f67ce"
+      url "https://github.com/casualjim/zage/releases/download/v0.1.6/zage-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "577c2866b2283c76935a157f512a0e3368814dbcd243ab7fc6866505a08a8a56"
     end
   end
   license "MIT"
