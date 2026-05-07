@@ -1,15 +1,15 @@
 class HeimdallSandbox < Formula
   desc "Linux-only process sandbox runtime for Heimdall."
   homepage "https://github.com/casualjim/heimdall"
-  version "0.1.3"
+  version "0.1.4"
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/heimdall/releases/download/v0.1.3/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "4ecd2edefd600b4f115c21c55ba06dc31ad997ab1ef37c4afae8ee7cef2f2327"
+      url "https://github.com/casualjim/heimdall/releases/download/v0.1.4/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "2bb3aad5290c2b4dc0edd9f2763c66c40d83f0b4f41837b77aa63b36f409c5e9"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/heimdall/releases/download/v0.1.3/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "11e8ba6d296e695927ed4364f70dd696b735fbf57e6a37208ae87cb0f9a34366"
+      url "https://github.com/casualjim/heimdall/releases/download/v0.1.4/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "6b9128293481f26813dedf136b3717d9567ccd7cc1d6b480f669d39095851d07"
     end
   end
   license "MIT"
