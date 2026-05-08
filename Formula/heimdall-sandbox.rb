@@ -1,19 +1,19 @@
 class HeimdallSandbox < Formula
   desc "Process sandbox runtime for Heimdall."
   homepage "https://github.com/casualjim/heimdall-sandbox"
-  version "0.1.9"
+  version "0.1.10"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.9/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
-    sha256 "3c85c5b7a73473167507a8ccae89e8fccd895536eb8665f86dd995397d33dbed"
+    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.10/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
+    sha256 "186205bb336fd414c312516993497ca8347b15520aa61a91599e4297c4531f81"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.9/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "7941b7f769d7cd80963be2f6170744c3713525f847db607b1a9c255a9acfb105"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.10/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "fb757f6e0dc68c3581a798bf244500dfd659c84e8c85e4fc3ad744aecf9ae0eb"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.9/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "dfab2757be8075fc5051995792a6ed13bab5d74ce0c8bd7a7e4dd2c6f9f520ba"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.10/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "3b2e9eb98802bf87357fa68f37dce35ab33360d15e8328de8f7d7ad1f779a453"
     end
   end
   license "MIT"
