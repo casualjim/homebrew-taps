@@ -1,27 +1,20 @@
 class HeimdallSandbox < Formula
   desc "Process sandbox runtime for Heimdall."
   homepage "https://github.com/casualjim/heimdall-sandbox"
-  version "0.1.17"
+  version "0.1.19"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.17/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
-    sha256 "b08f796b770508a2c68fd997d22ae627ba2c7e6d11473e2eb7c06f635ae53106"
+    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.19/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
+    sha256 "35fa06e6e78535af5baa4c5584599fda9ff14fed5faffdd1bfdbe7558b061758"
   end
-  if OS.linux?
-    if Hardware::CPU.arm?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.17/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "dce134ed33430a205f9a0bcea07545423c3ba1d4e167127f9783c341356c1e6c"
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.17/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "d69858786d89539262b2f105167322ca1a1484f51e7e10e5caaa1703ef5e91e8"
-    end
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.19/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
+    sha256 "8e738115b6adbf0fac33bfe55e6b94aa1404601304db4729d4012923c7576186"
   end
   license "MIT"
 
   BINARY_ALIASES = {
-    "aarch64-apple-darwin":      {},
-    "aarch64-unknown-linux-gnu": {},
-    "x86_64-unknown-linux-gnu":  {},
+    "aarch64-apple-darwin":     {},
+    "x86_64-unknown-linux-gnu": {},
   }.freeze
 
   def target_triple
@@ -41,7 +34,6 @@ class HeimdallSandbox < Formula
 
   def install
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.mac? && Hardware::CPU.arm?
-    bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.arm?
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
