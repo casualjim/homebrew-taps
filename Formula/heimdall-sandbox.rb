@@ -1,19 +1,19 @@
 class HeimdallSandbox < Formula
   desc "Process sandbox runtime for Heimdall."
   homepage "https://github.com/casualjim/heimdall-sandbox"
-  version "0.1.24"
+  version "0.1.25"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.24/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
-    sha256 "0526a215eb8386785860e27a5c2a8a3a8f6fa3383664b90cf3e2828b79b7eb47"
+    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.25/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
+    sha256 "ae427c3a3fadc10b565271e852aee307b95bac72d0e7e3876622989b65559136"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.24/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "e6bb414ac016b699cf40b64ea82781a6e06e55bd027bcf0d50ec304bc851f489"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.25/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "20466872dcb42994e836aee230d2ebf6ca3248a5e8ba109171c126103c66468b"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.24/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "883cab54a16ce3394d7dbd9f4693e13c1c5210fcd9119f6e275868c4532a5513"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.25/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "cfe4290aca826e115439459c39893074328894e901db38c37f9716b08e39bad9"
     end
   end
   license "MIT"
@@ -34,7 +34,7 @@ class HeimdallSandbox < Formula
   def install_binary_aliases!
     BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
       dests.each do |dest|
-        bin.install_symlink bin.source.to_s => dest
+        bin.install_symlink bin/source.to_s => dest
       end
     end
   end
@@ -43,9 +43,6 @@ class HeimdallSandbox < Formula
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.mac? && Hardware::CPU.arm?
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.arm?
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.intel?
-
-    dylib = Dir["libwebgpu_dawn.*"].first
-    lib.install dylib if dylib
 
     install_binary_aliases!
 
@@ -57,14 +54,19 @@ class HeimdallSandbox < Formula
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
 
-    # Patch rpath into the binaries so they find libwebgpu_dawn in Homebrew's lib.
-    return unless OS.mac?
+# Install the WebGPU Dawn shared library.
+dylib = Dir["libwebgpu_dawn.*"].first
+lib.install dylib if dylib
 
-    %w[heimdall-sandbox heimdall-sandbox-inner].each do |binary|
-      path = "#{bin}/#{binary}"
-      chmod "+w", path
-      MachO::Tools.add_rpath(path, "@loader_path/../lib", :max_align)
-      system "codesign", "--force", "--sign", "-", path
-    end
+# Add rpath so binaries find the shared library in Homebrew's lib directory.
+if OS.mac?
+  %w[heimdall-sandbox heimdall-sandbox-inner].each do |binary|
+    p = "#{bin}/#{binary}"
+    chmod "+w", p
+    MachO::Tools.add_rpath(p, "@loader_path/../lib", :max_align)
+    system "codesign", "--force", "--sign", "-", p
+  end
+end
+
   end
 end
