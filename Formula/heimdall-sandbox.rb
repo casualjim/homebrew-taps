@@ -1,19 +1,19 @@
 class HeimdallSandbox < Formula
   desc "Process sandbox runtime for Heimdall."
   homepage "https://github.com/casualjim/heimdall-sandbox"
-  version "0.1.25"
+  version "0.1.26"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.25/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
-    sha256 "ae427c3a3fadc10b565271e852aee307b95bac72d0e7e3876622989b65559136"
+    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.26/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
+    sha256 "1d8e203d13cc9e57bef9a1ccaf27fbf15f478e1715d305f907a7f81b0d366a26"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.25/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "20466872dcb42994e836aee230d2ebf6ca3248a5e8ba109171c126103c66468b"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.26/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "8dace4d099a1690c2c2f73928c78c5f20aa3b166158880b9e0fedbb4390e1a26"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.25/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "cfe4290aca826e115439459c39893074328894e901db38c37f9716b08e39bad9"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.26/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "94e2acd412c6ecf8617588ee2df1fdab1333ed21d348484ece143067320328fa"
     end
   end
   license "MIT"
@@ -46,13 +46,6 @@ class HeimdallSandbox < Formula
 
     install_binary_aliases!
 
-    # Homebrew will automatically install these, so we don't need to do that
-    doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
-    leftover_contents = Dir["*"] - doc_files
-
-    # Install any leftover files in pkgshare; these are probably config or
-    # sample files.
-    pkgshare.install(*leftover_contents) unless leftover_contents.empty?
 
 # Install the WebGPU Dawn shared library.
 dylib = Dir["libwebgpu_dawn.*"].first
@@ -68,5 +61,12 @@ if OS.mac?
   end
 end
 
+        # Homebrew will automatically install these, so we don't need to do that
+    doc_files = Dir["README.*", "readme.*", "LICENSE", "LICENSE.*", "CHANGELOG.*"]
+    leftover_contents = Dir["*"] - doc_files
+
+    # Install any leftover files in pkgshare; these are probably config or
+    # sample files.
+    pkgshare.install(*leftover_contents) unless leftover_contents.empty?
   end
 end
