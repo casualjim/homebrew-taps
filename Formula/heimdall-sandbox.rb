@@ -56,14 +56,13 @@ class HeimdallSandbox < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
-  end
 
-  def post_install
+    # Patch rpath into the binaries so they find libwebgpu_dawn in Homebrew's lib.
     return unless OS.mac?
 
     %w[heimdall-sandbox heimdall-sandbox-inner].each do |binary|
       path = "#{bin}/#{binary}"
-      FileUtils.chmod("u+w", path)
+      chmod "+w", path
       MachO::Tools.add_rpath(path, "@loader_path/../lib", :max_align)
       system "codesign", "--force", "--sign", "-", path
     end
