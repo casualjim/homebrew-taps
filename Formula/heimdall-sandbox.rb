@@ -34,7 +34,7 @@ class HeimdallSandbox < Formula
   def install_binary_aliases!
     BINARY_ALIASES[target_triple.to_sym].each do |source, dests|
       dests.each do |dest|
-        bin.install_symlink bin/source.to_s => dest
+        bin.install_symlink bin.source.to_s => dest
       end
     end
   end
@@ -43,6 +43,15 @@ class HeimdallSandbox < Formula
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.mac? && Hardware::CPU.arm?
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.arm?
     bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.intel?
+
+    dylib = Dir["libwebgpu_dawn.*"].first
+    lib.install dylib if dylib
+
+    # Add rpath so the binary finds the shared library in Homebrew's lib directory.
+    if OS.mac?
+      MachO::Tools.add_rpath("#{bin}/heimdall-sandbox", "@loader_path/../lib", :max_align)
+      MachO::Tools.add_rpath("#{bin}/heimdall-sandbox-inner", "@loader_path/../lib", :max_align)
+    end
 
     install_binary_aliases!
 
