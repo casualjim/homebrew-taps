@@ -5,21 +5,21 @@ class PalateCapi < Formula
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-capi-aarch64-apple-darwin.tar.xz"
-      sha256 "a6f1c49ae460999cb349e4bc8a03596cdb3ea857bab982d2f8f2944beb523320"
+      sha256 "95b70935d277703b95252d2b0638f65e36a3fa4d5cce39007f446658934519d0"
     end
     if Hardware::CPU.intel?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-capi-x86_64-apple-darwin.tar.xz"
-      sha256 "611cec494235e257a48753a716a195766e2514562a66f0d03aba02478c5d6f45"
+      sha256 "6974f5d467cce16adbf695165c59ab13f1792e1068e556edcf0a4d891889f26a"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-capi-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "dedc659daf1b423b1d153708d7653d963a49de5aa0b2e5356eb20980e23d6f58"
+      sha256 "68a48a9fa19c1637a2e80730d9bd6475002cd76d900f96a3c3f1cea9bedea802"
     end
     if Hardware::CPU.intel?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-capi-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "d0215d3b6f95e6d968226d83973c2c36393420a8c215786fc28e397fa976d8e4"
+      sha256 "86d47b5a9645b635e72606424f4572907aa88ead2769bb6ae36b12ed1248d041"
     end
   end
   license "GPL-3.0-or-later"

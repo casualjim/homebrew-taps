@@ -5,21 +5,21 @@ class Palate < Formula
   if OS.mac?
     if Hardware::CPU.arm?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "79bde4bb062a37471d89236075ac057a1b729e22f9eb31204994edb685d12516"
+      sha256 "26e92ee1a3d15940601dc10752f1d15b943a85178c41cb710c16fd89641a5f7e"
     end
     if Hardware::CPU.intel?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "25b8ede92121d51e73f53992b9fe02eba6ba0fd933936ef04e4282e5fc9942a3"
+      sha256 "f3660ee63ab75c427826743c5af27b14f334455dc41901366d89d8226f66d8f9"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-cli-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "e7b75e5ffd3e45056259275da2cfdb0cb8804823b5dcbfe0dafa0e4406ca8ae3"
+      sha256 "0aa51f8c727f5b111c9beaa564e8360278ecae697b0af73884de759a9f2eef23"
     end
     if Hardware::CPU.intel?
       url "https://github.com/casualjim/palate/releases/download/v0.4.0/palate-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "4c00d83fe38fb864b03d8da6e3ec1569080c9fa548feaf75fa7fd70dbeb36786"
+      sha256 "dbb4de730ec4862901056b5c4bc705fbf792025eb51a0333c74960bafc73e771"
     end
   end
   license "GPL-3.0-or-later"
