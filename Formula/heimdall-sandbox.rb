@@ -47,15 +47,6 @@ class HeimdallSandbox < Formula
     dylib = Dir["libwebgpu_dawn.*"].first
     lib.install dylib if dylib
 
-    # Add rpath so the binary finds the shared library in Homebrew's lib directory.
-    if OS.mac?
-      MachO::Tools.add_rpath("#{bin}/heimdall-sandbox", "@loader_path/../lib", :max_align)
-      MachO::Tools.add_rpath("#{bin}/heimdall-sandbox-inner", "@loader_path/../lib", :max_align)
-      # Re-sign after modifying the Mach-O to satisfy macOS code signing.
-      system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox"
-      system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox-inner"
-    end
-
     install_binary_aliases!
 
     # Homebrew will automatically install these, so we don't need to do that
@@ -65,5 +56,14 @@ class HeimdallSandbox < Formula
     # Install any leftover files in pkgshare; these are probably config or
     # sample files.
     pkgshare.install(*leftover_contents) unless leftover_contents.empty?
+  end
+
+  def post_install
+    return unless OS.mac?
+
+    MachO::Tools.add_rpath("#{bin}/heimdall-sandbox", "@loader_path/../lib", :max_align)
+    MachO::Tools.add_rpath("#{bin}/heimdall-sandbox-inner", "@loader_path/../lib", :max_align)
+    system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox"
+    system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox-inner"
   end
 end
