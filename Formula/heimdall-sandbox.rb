@@ -61,9 +61,11 @@ class HeimdallSandbox < Formula
   def post_install
     return unless OS.mac?
 
-    MachO::Tools.add_rpath("#{bin}/heimdall-sandbox", "@loader_path/../lib", :max_align)
-    MachO::Tools.add_rpath("#{bin}/heimdall-sandbox-inner", "@loader_path/../lib", :max_align)
-    system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox"
-    system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox-inner"
+    %w[heimdall-sandbox heimdall-sandbox-inner].each do |binary|
+      path = "#{bin}/#{binary}"
+      FileUtils.chmod("u+w", path)
+      MachO::Tools.add_rpath(path, "@loader_path/../lib", :max_align)
+      system "codesign", "--force", "--sign", "-", path
+    end
   end
 end
