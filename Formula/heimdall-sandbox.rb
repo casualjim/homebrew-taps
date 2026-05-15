@@ -51,6 +51,9 @@ class HeimdallSandbox < Formula
     if OS.mac?
       MachO::Tools.add_rpath("#{bin}/heimdall-sandbox", "@loader_path/../lib", :max_align)
       MachO::Tools.add_rpath("#{bin}/heimdall-sandbox-inner", "@loader_path/../lib", :max_align)
+      # Re-sign after modifying the Mach-O to satisfy macOS code signing.
+      system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox"
+      system "codesign", "--force", "--sign", "-", "#{bin}/heimdall-sandbox-inner"
     end
 
     install_binary_aliases!
