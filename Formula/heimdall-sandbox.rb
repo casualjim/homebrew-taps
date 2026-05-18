@@ -1,19 +1,19 @@
 class HeimdallSandbox < Formula
   desc "Process sandbox runtime for Heimdall."
   homepage "https://github.com/casualjim/heimdall-sandbox"
-  version "0.1.37"
+  version "0.1.38"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.37/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
-    sha256 "8d52375ce51741d4f87c8a56f793fbef7d7aa029f0df48bc48b6fe92d300ce26"
+    url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.38/heimdall-sandbox-aarch64-apple-darwin.tar.xz"
+    sha256 "18501e805fee49158131aeecc9ccc49b94cab866bff41b9ae6f6d36e93de164a"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.37/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "c258dbd610d54abfb74e3760140e28bf156e2de71e88e14bf98adac333571ac4"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.38/heimdall-sandbox-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "839fb3103770be736d244341987e1dbb06fa46d371b797278087cea5248da2b3"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.37/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "3b93c0f103d2d63318e357072720733fa130549b07a93bdab4dfd8cff43763a0"
+      url "https://github.com/casualjim/heimdall-sandbox/releases/download/v0.1.38/heimdall-sandbox-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "e9238fcc496a2aca6c36c8f29f6cfc081d7af4a618d20f561d15b422d7377775"
     end
   end
   license "MIT"
@@ -40,9 +40,9 @@ class HeimdallSandbox < Formula
   end
 
   def install
-    bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.mac? && Hardware::CPU.arm?
-    bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.arm?
-    bin.install "heimdall-sandbox", "heimdall-sandbox-inner" if OS.linux? && Hardware::CPU.intel?
+    bin.install "heimdall-sandbox" if OS.mac? && Hardware::CPU.arm?
+    bin.install "heimdall-sandbox" if OS.linux? && Hardware::CPU.arm?
+    bin.install "heimdall-sandbox" if OS.linux? && Hardware::CPU.intel?
 
     install_binary_aliases!
 
