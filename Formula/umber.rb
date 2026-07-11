@@ -1,19 +1,19 @@
 class Umber < Formula
   desc "cat with syntax highlighting - a modern replacement for cat with tree-sitter powered syntax highlighting"
   homepage "https://github.com/casualjim/umber"
-  version "0.5.3"
+  version "0.5.4"
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/casualjim/umber/releases/download/v0.5.3/umber-aarch64-apple-darwin.tar.xz"
-    sha256 "87c1bed1d32b917c175131f19b635bdbec9830a8a88e83ddbef89b4df61730b1"
+    url "https://github.com/casualjim/umber/releases/download/v0.5.4/umber-aarch64-apple-darwin.tar.xz"
+    sha256 "7c37e14c5e95a33ad970eb2d49b28fa5451df784ccf5ff0fc49f9fe70f61ef02"
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/casualjim/umber/releases/download/v0.5.3/umber-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "5acf22c91210d4078dee0d414917c3235383c11ec15824d2ec84859235f6c181"
+      url "https://github.com/casualjim/umber/releases/download/v0.5.4/umber-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "41bec707ec1832e2d13a9d30c65bccf0c7c952f074ac5cdca7abde6036c3eb74"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/casualjim/umber/releases/download/v0.5.3/umber-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "f56d5f21a0d9ab79df495fdc1320155be0aa7e9ea0403b13d9d7c8625b432129"
+      url "https://github.com/casualjim/umber/releases/download/v0.5.4/umber-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "213cc0fe3e1f99c9c574769ae15e7250a7bd3c92959223c9f58237d314436880"
     end
   end
   license "MIT"
